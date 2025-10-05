@@ -2,6 +2,7 @@ package com.rituraj.salon.salonbooking.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.Map;
 
 import java.util.List;
 
@@ -12,11 +13,11 @@ public class AdminEntity {
     private String id;  // MongoDB will generate this automatically
 
     private String salonName;
-    private String locality;
-    private int price;
+    private String location;
+  
     private String number;
-    private int time ;
-    private List<String> services;
+    
+   private List<Map<String, String>> services;
     private List<String> schedule;
 
 
@@ -25,10 +26,10 @@ public class AdminEntity {
     }
 
     // Parameterized constructor (without id, Mongo will generate it)
-    public AdminEntity(String salonName, String locality, int price, String number, List<String> services,List <String> s) {
+    public AdminEntity(String salonName, String location, String number, List<Map<String, String>> services,List <String> s) {
         this.salonName = salonName;
-        this.locality = locality;
-        this.price = price;
+        this.location = location;
+      
         this.number = number;
         this.services = services;
         this.schedule=s;
@@ -47,11 +48,11 @@ public class AdminEntity {
     // Getters and Setters
 
     public String getId() {
-        return id;  // Include getter for frontend to use ID
+        return id;  
     }
 
     public void setId(String id) {
-        this.id = id;  // Usually not needed; Mongo sets it automatically
+        this.id = id;  
     }
 
     public String getSalonName() {
@@ -62,21 +63,18 @@ public class AdminEntity {
         this.salonName = salonName;
     }
 
-    public String getLocality() {
-        return locality;
-    }
+   public String getLocation() {
+    return location;
+}
 
-    public void setLocality(String locality) {
-        this.locality = locality;
-    }
+public void setLocation(String location) {
+    this.location = location;
+}
 
-    public int getPrice() {
-        return price;
-    }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
+   
+
+   
 
     public String getNumber() {
         return number;
@@ -86,11 +84,11 @@ public class AdminEntity {
         this.number = number;
     }
 
-    public List<String> getServices() {
+    public List<Map<String, String>>  getServices() {
         return services;
     }
 
-    public void setServices(List<String> services) {
+    public void setServices(List<Map<String, String>> services) {
         this.services = services;
     }
 }
